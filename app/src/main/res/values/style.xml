@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="mainScreenTextView">
-        <item name="android:background">@drawable/border_bottom</item>
+    <style name="mainTextView">
+        <item name="android:background">@drawable/border_top</item>
         <item name="android:gravity">center</item>
         <item name="android:textAlignment">center</item>
         <item name="android:textAllCaps">true</item>
-    </style>
-    <style name="logo">
-        <item name="android:padding">10dp</item>
-        <item name="android:textAllCaps">true</item>
-        <item name="android:textSize">18sp</item>
-        <item name="android:textStyle">bold</item>
     </style>
     <style name="searchBar">
         <item name="android:hint">@string/search</item>

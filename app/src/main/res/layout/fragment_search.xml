@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:autofillHints="@string/search"
-    android:background="@drawable/border_bottom"
+    android:background="@drawable/border_top"
     android:drawableEnd="@drawable/search"
     android:hint="@string/search"
     android:inputType="text"

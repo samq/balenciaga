@@ -9,23 +9,30 @@
         tools:context=".fragments.MainFragment"
         tools:viewBindingIgnore="true" >
 
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/searchFragment"
+            android:name="com.balenciaga.fragments.SearchFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"/>
+
         <TextView
             android:id="@+id/womenTextView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:text="@string/women"
-            app:layout_constraintBottom_toTopOf="@+id/allTextView"
-            app:layout_constraintTop_toTopOf="parent"
-            style="@style/mainScreenTextView"/>
+            app:layout_constraintBottom_toTopOf="@id/allTextView"
+            app:layout_constraintTop_toBottomOf="@id/searchFragment"
+            style="@style/mainTextView"/>
 
         <TextView
             android:id="@+id/allTextView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:text="@string/all"
-            app:layout_constraintBottom_toTopOf="@+id/menTextView"
-            app:layout_constraintTop_toBottomOf="@+id/womenTextView"
-            style="@style/mainScreenTextView" />
+            app:layout_constraintBottom_toTopOf="@id/menTextView"
+            app:layout_constraintTop_toBottomOf="@id/womenTextView"
+            style="@style/mainTextView" />
 
         <TextView
             android:id="@+id/menTextView"
@@ -33,8 +40,8 @@
             android:layout_height="0dp"
             android:text="@string/men"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/allTextView"
-            style="@style/mainScreenTextView" />
+            app:layout_constraintTop_toBottomOf="@id/allTextView"
+            style="@style/mainTextView" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
