@@ -7,14 +7,19 @@
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.balenciaga.fragments.MainFragment"
-        android:label="MainFragment" >
+        android:label="Main Fragment"
+        tools:layout="@layout/fragment_main" >
         <action
-            android:id="@+id/action_mainFragment_to_categoryFragment"
+            android:id="@+id/navigate_to_category_fragment"
             app:destination="@id/categoryFragment" />
     </fragment>
     <fragment
         android:id="@+id/categoryFragment"
         android:name="com.balenciaga.fragments.CategoryFragment"
-        android:label="fragment_category"
-        tools:layout="@layout/fragment_category" />
+        android:label="Category Fragment"
+        tools:layout="@layout/fragment_category" >
+        <argument
+            android:name="category"
+            app:argType="string" />
+    </fragment>
 </navigation>
