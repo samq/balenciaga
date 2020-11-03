@@ -4,4 +4,7 @@
     <string name="all">All</string>
     <string name="men">Men</string>
     <string name="search">SEARCH</string>
+    <string name="bagIconDescription">Bag Icon</string>
+    <string name="customerServiceIconDescription">Customer Service Icon</string>
+    <string name="menuIconDescription">Menu Icon</string>
 </resources>

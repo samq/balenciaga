@@ -8,20 +8,20 @@
     tools:context=".activities.MainScreenActivity" >
 
     <fragment
-        android:name="com.balenciaga.fragments.LogoFragment"
+        android:name="com.balenciaga.fragments.HeaderFragment"
         android:id="@+id/logoFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <fragment
         android:name="com.balenciaga.fragments.SearchFragment"
-        android:id="@+id/searchEditText"
+        android:id="@+id/searchFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <fragment
-        android:id="@+id/mainScreenFragment"
-        android:name="com.balenciaga.fragments.MainScreenFragment"
+        android:name="com.balenciaga.fragments.MainFragment"
+        android:id="@+id/mainFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
