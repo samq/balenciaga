@@ -15,4 +15,10 @@
     <style name="navIcons">
         <item name="android:padding">5dp</item>
     </style>
+    <style name="categoryTextView">
+        <item name="android:background">@drawable/border_right_and_top</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textAlignment">center</item>
+        <item name="textAllCaps">true</item>
+    </style>
 </resources>
