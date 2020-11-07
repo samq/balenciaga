@@ -6,14 +6,27 @@
     android:layout_height="match_parent"
     tools:context=".fragments.ProductListFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="wrap_content"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/searchbarFragment"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="PRODUCT LIST"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:name="com.balenciaga.fragments.SearchbarFragment"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/filterFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:name="com.balenciaga.fragments.FilterFragment"
+        app:layout_constraintTop_toBottomOf="@id/searchbarFragment"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/productListRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/border_top"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:layout_constraintTop_toBottomOf="@id/filterFragment"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
