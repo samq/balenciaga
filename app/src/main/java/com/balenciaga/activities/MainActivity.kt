@@ -31,26 +31,35 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.toolbar_menu, menu)
-
-        // Hides Toolbar Icons
-        toolbar.menu.forEach { item -> item.isVisible = false }
-
+        hideToolbarIcons()
         return true
     }
 
-    // Toolbar - MenuItem selected
+    // Toolbar - MenuItem selected - Handles what happen when icon clicked on in the toolbar.
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when(item.itemId) {
+        // Cart/Bag
         R.id.action_cart -> {
             true
         }
+        // Customer Service
         R.id.action_customer_service -> {
             true
         }
+        // Menu
         R.id.action_menu -> {
             true
         }
         else -> {
             super.onOptionsItemSelected(item)
         }
+    }
+
+    // Hides Toolbar Icons
+    fun hideToolbarIcons() {
+        toolbar.menu.forEach { item -> item.isVisible = false }
+    }
+    // Unhides Toolbar Icons
+    fun unhideToolbarIcons() {
+        toolbar.menu.forEach { item -> item.isVisible = true }
     }
 }

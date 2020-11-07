@@ -11,4 +11,17 @@
     <string name="menuIconDescription">Menu Icon</string>
     <string name="searchIconDescription">Search Icon</string>
     <string name="placeholder">PLACEHOLDER</string>
+    <!-- Category Fragment -->
+    <string name="back">Back</string>
+    <string name="newArrivals">New Arrivals</string>
+    <string name="smallLeatherGoods">Small Leather Goods</string>
+    <string name="bags">Bags</string>
+    <string name="miniBags">Mini Bags</string>
+    <string name="sneakers">Sneakers</string>
+    <string name="shoes">Shoes</string>
+    <string name="readyToWear">Ready to Wear</string>
+    <string name="accessories">Accessories</string>
+    <string name="kids">Kids</string>
+    <string name="collections">Collections</string>
+    <string name="previousSeasons">Previous Seasons</string>
 </resources>

@@ -10,7 +10,7 @@
         android:label="Main Fragment"
         tools:layout="@layout/fragment_main" >
         <action
-            android:id="@+id/navigate_to_category_fragment"
+            android:id="@+id/navigate_to_categoryFragment"
             app:destination="@id/categoryFragment" />
     </fragment>
     <fragment
@@ -18,6 +18,18 @@
         android:name="com.balenciaga.fragments.CategoryFragment"
         android:label="Category Fragment"
         tools:layout="@layout/fragment_category" >
+        <argument
+            android:name="category"
+            app:argType="string" />
+        <action
+            android:id="@+id/navigate_to_productListFragment"
+            app:destination="@id/productListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/productListFragment"
+        android:name="com.balenciaga.fragments.ProductListFragment"
+        android:label="fragment_product_list"
+        tools:layout="@layout/fragment_product_list" >
         <argument
             android:name="category"
             app:argType="string" />

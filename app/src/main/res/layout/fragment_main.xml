@@ -3,6 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools" >
 
+    <data>
+        <variable
+            name="mainFragmentHandler"
+            type="com.balenciaga.fragments.MainFragmentHandler" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -20,6 +26,7 @@
             android:id="@+id/womenTextView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:onClick="@{mainFragmentHandler::navigateToCategoryFragment}"
             android:text="@string/women"
             app:layout_constraintBottom_toTopOf="@id/allTextView"
             app:layout_constraintTop_toBottomOf="@id/searchFragment"
@@ -29,6 +36,7 @@
             android:id="@+id/allTextView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:onClick="@{mainFragmentHandler::navigateToCategoryFragment}"
             android:text="@string/all"
             app:layout_constraintBottom_toTopOf="@id/menTextView"
             app:layout_constraintTop_toBottomOf="@id/womenTextView"
@@ -38,6 +46,7 @@
             android:id="@+id/menTextView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:onClick="@{mainFragmentHandler::navigateToCategoryFragment}"
             android:text="@string/men"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/allTextView"
