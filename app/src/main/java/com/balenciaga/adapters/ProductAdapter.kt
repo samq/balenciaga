@@ -1,30 +1,29 @@
 package com.balenciaga.adapters
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.balenciaga.R
+import com.balenciaga.databinding.ProductViewBinding
 
 class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
 
     private val productNameList : List<String> = listOf<String>("PLACEHOLDER - NAME")
     private val productPriceList : List<String> = listOf<String>("PLACEHOLDER - PRICE")
 
-    class ProductViewHolder (view: View) : RecyclerView.ViewHolder(view) {
-        var productViewHolder : FrameLayout = view.findViewById(R.id.productViewHolder)
-        var productNameTextView : TextView = view.findViewById(R.id.productNameTextView)
-        var productPriceTextView : TextView = view.findViewById(R.id.productPriceTextView)
-        var productImageView : ImageView = view.findViewById(R.id.productImageView)
+    class ProductViewHolder(binding: ProductViewBinding) : RecyclerView.ViewHolder(binding.root) {
+        var productNameTextView : TextView = binding.productNameTextView
+        var productPriceTextView : TextView = binding.productPriceTextView
+        var productImageView : ImageView = binding.productImageView
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.product_view, parent, false) as View
-        return ProductViewHolder(view)
+        // View Binding
+        val layoutInflater = LayoutInflater.from(parent.context)
+        val binding = ProductViewBinding.inflate(layoutInflater, parent, false)
+        return ProductViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
@@ -32,7 +31,6 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() 
         holder.productPriceTextView.text = productPriceList[0]
         holder.productImageView.apply {
             setImageResource(R.drawable.android)
-            scaleType = ImageView.ScaleType.FIT_XY
         }
     }
 
