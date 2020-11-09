@@ -1,32 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".fragments.ProductListFragment">
-
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/searchbarFragment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:name="com.balenciaga.fragments.SearchbarFragment"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/filterFragment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:name="com.balenciaga.fragments.FilterFragment"
-        app:layout_constraintTop_toBottomOf="@id/searchbarFragment"/>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/productListRecyclerView"
+<layout>
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/border_top"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:layout_constraintTop_toBottomOf="@id/filterFragment"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        tools:context=".fragments.ProductListFragment">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/searchbarFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:name="com.balenciaga.fragments.SearchbarFragment"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/filterFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:name="com.balenciaga.fragments.FilterFragment"
+            app:layout_constraintTop_toBottomOf="@id/searchbarFragment"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/productListRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@drawable/border_top"
+            app:layout_constraintTop_toBottomOf="@id/filterFragment"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
