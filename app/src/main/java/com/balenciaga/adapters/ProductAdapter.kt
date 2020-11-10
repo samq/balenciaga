@@ -7,11 +7,16 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.balenciaga.R
 import com.balenciaga.databinding.ProductViewBinding
+import com.balenciaga.entities.Product
+import com.balenciaga.models.ProductViewModel
 
-class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
+class ProductAdapter(viewModel: ProductViewModel) : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
 
-    private val productNameList : List<String> = listOf<String>("PLACEHOLDER - NAME")
-    private val productPriceList : List<String> = listOf<String>("PLACEHOLDER - PRICE")
+    private var products : List<Product> = listOf()
+        set(value) {
+            field = value
+            notifyDataSetChanged()
+        }
 
     class ProductViewHolder(binding: ProductViewBinding) : RecyclerView.ViewHolder(binding.root) {
         var productNameTextView : TextView = binding.productNameTextView
@@ -27,14 +32,12 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() 
     }
 
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
-        holder.productNameTextView.text = productNameList[0]
-        holder.productPriceTextView.text = productPriceList[0]
+        holder.productNameTextView.text = products[position].name
+        holder.productPriceTextView.text = products[position].price.toString()
         holder.productImageView.apply {
             setImageResource(R.drawable.android)
         }
     }
 
-    override fun getItemCount(): Int {
-        return 20
-    }
+    override fun getItemCount(): Int = products.size
 }
