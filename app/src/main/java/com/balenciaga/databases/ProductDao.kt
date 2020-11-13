@@ -1,14 +1,22 @@
 package com.balenciaga.databases
 
-import androidx.room.Dao
-import androidx.room.Query
-import com.balenciaga.entities.Product
+import androidx.lifecycle.LiveData
+import androidx.room.*
 
 @Dao
 interface ProductDao {
-//    @Query("")
-//    fun loadProducts() : List<Product>
-//
-//    @Query("")
-//    fun loadProductDetails() : Product
+    @Delete
+    fun deleteProduct(product : Product)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertProduct(product : Product)
+
+    @Query("SELECT * FROM products")
+    fun loadAllProducts() : LiveData<List<Product>>
+
+    @Query("SELECT * FROM products WHERE productID = :productID")
+    fun loadProductDetails(productID : String) : LiveData<Product>
+
+    @Update
+    fun updateProduct(product : Product)
 }

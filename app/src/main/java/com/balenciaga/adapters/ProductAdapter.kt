@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.balenciaga.R
 import com.balenciaga.databinding.ProductViewBinding
-import com.balenciaga.entities.Product
+import com.balenciaga.databases.Product
 import com.balenciaga.models.ProductViewModel
 
 class ProductAdapter(viewModel: ProductViewModel) : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
