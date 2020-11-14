@@ -4,11 +4,10 @@ package com.balenciaga.network
 // Object that store parsed results
 // Properties correspond to name in JSON object
 // @Json(name="...") val ... - Annotation to map JSON attribute to different variable name
-data class ProductProperty(
+data class Product(
     val productID : String,
     val name : String,
     val price : Double,
-    val images : String,
     val description : String,
     val colors : String,
     val sizes : String,
@@ -16,3 +15,6 @@ data class ProductProperty(
     val composition : String,
     val details : String,
 )
+
+// Extension Function
+// Converts Domain Object into Database Objects

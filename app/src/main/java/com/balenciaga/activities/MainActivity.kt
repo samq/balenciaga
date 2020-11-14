@@ -7,8 +7,10 @@ import android.view.MenuItem
 import androidx.core.view.forEach
 import com.balenciaga.R
 import com.balenciaga.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityMainBinding

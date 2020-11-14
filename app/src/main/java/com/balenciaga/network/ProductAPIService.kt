@@ -8,7 +8,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 
 // Base URL for API
-private const val BASE_URL = "https://..."
+private const val BASE_URL = "https://samq.github.io/data/"
 
 // Moshi Object
 private val moshi = Moshi.Builder()
@@ -27,9 +27,9 @@ private val retrofit = Retrofit.Builder()
 interface ProductAPIService {
     // GET - Specify Endpoint. Appended to Base URL
     // CALL Object - Used to start the request
-    @GET("products")
+    @GET("balenciaga.json")
     fun getProducts():
-        Call<List<ProductProperty>>
+        Call<List<Product>>
 }
 
 // Object that initializes the Retrofit service
