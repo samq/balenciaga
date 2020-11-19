@@ -25,15 +25,16 @@ class ProductAdapter(private val clickListener: ProductListener)
 
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
         val product = getItem(position)
-        holder.bind(product, clickListener)
+        holder.bind(product, position, clickListener)
     }
 
     class ProductViewHolder private constructor(private val binding: ProductViewBinding) : RecyclerView.ViewHolder(binding.root) {
 
         // bind - Sets the binding(s) needed by the ProductViewHolder
-        fun bind(product: Product, clickListener: ProductListener) {
+        fun bind(product: Product, position: Int, clickListener: ProductListener) {
             binding.product = product
             binding.clickListener = clickListener
+            binding.position = position
             binding.executePendingBindings()
         }
 

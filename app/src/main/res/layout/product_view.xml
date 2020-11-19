@@ -2,6 +2,7 @@
 <layout>
     <data>
         <variable name="product" type="com.balenciaga.network.Product" />
+        <variable name="position" type="int" />
         <variable name="clickListener" type="com.balenciaga.adapters.ProductListener" />
     </data>
     <FrameLayout
@@ -10,8 +11,9 @@
         android:id="@+id/productViewHolder"
         android:layout_width="match_parent"
         android:layout_height="225dp"
-        android:padding="10dp"
-        android:onClick="@{() -> clickListener.onClick(product)}">
+        android:padding="1dp"
+        android:onClick="@{() -> clickListener.onClick(product)}"
+        app:productListBorders="@{position}" >
 
         <ImageView
             android:id="@+id/productImageView"
@@ -24,6 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="top"
+            android:padding="5dp"
             android:orientation="vertical" >
 
             <TextView
