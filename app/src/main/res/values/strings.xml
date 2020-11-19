@@ -25,7 +25,7 @@
     <string name="collections">Collections</string>
     <string name="previousSeasons">Previous Seasons</string>
     <!-- Product List Fragment -->
-    <string name="productPrice">$%1$.2f</string>
+    <string name="productListPrice">$%1$.2f</string>
     <string name="productListImage">\@drawable/_%1$s_a.jpg</string>
     <!-- Filter Fragment -->
     <string name="filter">Filter</string>

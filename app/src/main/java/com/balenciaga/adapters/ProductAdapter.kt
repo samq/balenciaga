@@ -1,35 +1,42 @@
 package com.balenciaga.adapters
 
-import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.balenciaga.databinding.ProductViewBinding
 import com.balenciaga.models.ProductViewModel
 import com.balenciaga.network.Product
 
-class ProductAdapter(viewModel: ProductViewModel) : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
+// RecyclerView.Adapter<ProductAdapter.ProductViewHolder>()
 
-    private var products : List<Product>? = viewModel.response.value
+// ListAdapter
+// Arguments - Type of Data List Holds, ViewHolder
+// Constructor Parameter - DiffCallback - Used to figure out what change when list updates
+// ListAdapter<Product, ProductAdapter.ProductViewHolder>(ProductDiffCallback())
 
-    class ProductViewHolder(private val context: Context, private val binding: ProductViewBinding) : RecyclerView.ViewHolder(binding.root) {
+class ProductAdapter()
+    : ListAdapter<Product, ProductAdapter.ProductViewHolder>(ProductDiffCallback()) {
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
+        return ProductViewHolder.from(parent)
+    }
+
+    override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
+        val product = getItem(position)
+        holder.bind(product)
+    }
+
+    fun updateProducts() {
+        notifyDataSetChanged()
+    }
+
+    class ProductViewHolder private constructor(private val binding: ProductViewBinding) : RecyclerView.ViewHolder(binding.root) {
 
         // bind - Sets the binding(s) needed by the ProductViewHolder
-        fun bind(product : Product?) {
-            if(product != null) {
-                binding.product = product
-                binding.productImageView.apply {
-                    // Product ID
-                    // Importing Assets:
-                    // Adds underscore (_) to the start of filename (Cannot start with number)
-                    // Replaces dashes (-) in filename with underscores (_)
-                    // Causes all uppercase letters to become lowercase letters
-                    val uri = "@drawable/_${product.productID.replace('-','_').toLowerCase()}_a"
-                    val resourceID = resources.getIdentifier(uri, "drawable", context.packageName)
-                    setImageResource(resourceID)
-                }
-            }
+        fun bind(product : Product) {
+            binding.product = product
             binding.executePendingBindings()
         }
 
@@ -39,24 +46,21 @@ class ProductAdapter(viewModel: ProductViewModel) : RecyclerView.Adapter<Product
                 // View Binding
                 val layoutInflater = LayoutInflater.from(parent.context)
                 val binding = ProductViewBinding.inflate(layoutInflater, parent, false)
-                return ProductViewHolder(parent.context, binding)
+                return ProductViewHolder(binding)
             }
         }
     }
+}
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
-        return ProductViewHolder.from(parent)
+// Determines if Product is added, removed, moved, or changed
+class ProductDiffCallback : DiffUtil.ItemCallback<Product>() {
+    // Checks if Products are the same
+    override fun areItemsTheSame(oldItem: Product, newItem: Product): Boolean {
+        return oldItem.productID == newItem.productID
+    }
+    // Checks if Product contents have changed (equality check via data class)
+    override fun areContentsTheSame(oldItem: Product, newItem: Product): Boolean {
+        return oldItem == newItem
     }
 
-    override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
-        val product = products?.get(position)
-        holder.bind(product)
-    }
-
-    override fun getItemCount(): Int = products?.size ?: 0
-
-    fun updateProducts(updatedProductsList : List<Product>?) {
-        products = updatedProductsList
-        notifyDataSetChanged()
-    }
 }

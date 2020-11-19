@@ -23,20 +23,15 @@ class ProductListFragment : Fragment() {
     // ViewModel
     private val viewModel : ProductViewModel by viewModels()
 
-    // RecyclerView
-    private lateinit var recyclerView : RecyclerView
-    private lateinit var viewAdapter : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>
-    private lateinit var viewManager : RecyclerView.LayoutManager
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // View Binding
         _binding = FragmentProductListBinding.inflate(inflater, container, false)
 
         // RecyclerView
-        recyclerView = binding.productListRecyclerView
+        val recyclerView = binding.productListRecyclerView
         // ViewManager
-        viewManager = GridLayoutManager(activity, 2)
-        viewAdapter = ProductAdapter(viewModel)
+        val viewManager = GridLayoutManager(activity, 2)
+        val viewAdapter = ProductAdapter()
 
         // RecyclerView - Configuration
         recyclerView.apply {
@@ -49,7 +44,9 @@ class ProductListFragment : Fragment() {
 
         // ViewModel
         viewModel.response.observe(viewLifecycleOwner, Observer {
-            (viewAdapter as ProductAdapter).updateProducts(it)
+            it?.let {
+                viewAdapter.submitList(it)
+            }
         })
 
         return binding.root

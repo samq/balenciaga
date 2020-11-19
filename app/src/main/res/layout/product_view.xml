@@ -5,6 +5,7 @@
     </data>
     <FrameLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/productViewHolder"
         android:layout_width="match_parent"
         android:layout_height="225dp"
@@ -14,7 +15,8 @@
             android:id="@+id/productImageView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:contentDescription="@string/productImage" />
+            android:contentDescription="@string/productImage"
+            app:productListImage="@{product}"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -28,13 +30,13 @@
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:maxLines="1"
-                android:text='@{product != null ? product.name : ""}'/>
+                app:productListName="@{product}" />
 
             <TextView
                 android:id="@+id/productPriceTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text='@{product != null ? @string/productPrice(product.price) : ""}'/>
+                app:productListPrice="@{product}"/>
 
         </LinearLayout>
     </FrameLayout>
