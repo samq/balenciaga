@@ -33,13 +33,11 @@ class CategoryFragment : Fragment() {
             // Navigate to ProductListFragment
             // Passes category string to be used as a filter for results
             else {
-                val directions = CategoryFragmentDirections.navigateToProductListFragment(textView.text.toString())
+                val directions = CategoryFragmentDirections.navigateToProductListFragment()
                 findNavController().navigate(directions)
             }
         }
     }
-
-    private val args: CategoryFragmentArgs by navArgs()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

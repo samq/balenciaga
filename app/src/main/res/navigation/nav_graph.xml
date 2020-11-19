@@ -18,9 +18,6 @@
         android:name="com.balenciaga.fragments.CategoryFragment"
         android:label="Category Fragment"
         tools:layout="@layout/fragment_category" >
-        <argument
-            android:name="category"
-            app:argType="string" />
         <action
             android:id="@+id/navigate_to_productListFragment"
             app:destination="@id/productListFragment" />
@@ -30,9 +27,6 @@
         android:name="com.balenciaga.fragments.ProductListFragment"
         android:label="fragment_product_list"
         tools:layout="@layout/fragment_product_list" >
-        <argument
-            android:name="category"
-            app:argType="string" />
         <action
             android:id="@+id/navigate_to_productDetailsFragment"
             app:destination="@id/productDetailsFragment" />
@@ -41,9 +35,5 @@
         android:id="@+id/productDetailsFragment"
         android:name="com.balenciaga.fragments.ProductDetailsFragment"
         android:label="fragment_product_details"
-        tools:layout="@layout/fragment_product_details" >
-        <argument
-            android:name="productID"
-            app:argType="string" />
-    </fragment>
+        tools:layout="@layout/fragment_product_details" />
 </navigation>

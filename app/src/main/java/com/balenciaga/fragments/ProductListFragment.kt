@@ -7,9 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.balenciaga.adapters.ProductAdapter
+import com.balenciaga.adapters.ProductListener
 import com.balenciaga.databinding.FragmentProductListBinding
 import com.balenciaga.models.ProductViewModel
 
@@ -31,7 +33,9 @@ class ProductListFragment : Fragment() {
         val recyclerView = binding.productListRecyclerView
         // ViewManager
         val viewManager = GridLayoutManager(activity, 2)
-        val viewAdapter = ProductAdapter()
+        val viewAdapter = ProductAdapter(ProductListener {
+            findNavController().navigate(ProductListFragmentDirections.navigateToProductDetailsFragment())
+        })
 
         // RecyclerView - Configuration
         recyclerView.apply {

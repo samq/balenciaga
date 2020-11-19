@@ -6,9 +6,9 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.balenciaga.databinding.ProductViewBinding
-import com.balenciaga.models.ProductViewModel
 import com.balenciaga.network.Product
 
+// Adapter
 // RecyclerView.Adapter<ProductAdapter.ProductViewHolder>()
 
 // ListAdapter
@@ -16,7 +16,7 @@ import com.balenciaga.network.Product
 // Constructor Parameter - DiffCallback - Used to figure out what change when list updates
 // ListAdapter<Product, ProductAdapter.ProductViewHolder>(ProductDiffCallback())
 
-class ProductAdapter()
+class ProductAdapter(private val clickListener: ProductListener)
     : ListAdapter<Product, ProductAdapter.ProductViewHolder>(ProductDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
@@ -25,18 +25,15 @@ class ProductAdapter()
 
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
         val product = getItem(position)
-        holder.bind(product)
-    }
-
-    fun updateProducts() {
-        notifyDataSetChanged()
+        holder.bind(product, clickListener)
     }
 
     class ProductViewHolder private constructor(private val binding: ProductViewBinding) : RecyclerView.ViewHolder(binding.root) {
 
         // bind - Sets the binding(s) needed by the ProductViewHolder
-        fun bind(product : Product) {
+        fun bind(product: Product, clickListener: ProductListener) {
             binding.product = product
+            binding.clickListener = clickListener
             binding.executePendingBindings()
         }
 
@@ -62,5 +59,12 @@ class ProductDiffCallback : DiffUtil.ItemCallback<Product>() {
     override fun areContentsTheSame(oldItem: Product, newItem: Product): Boolean {
         return oldItem == newItem
     }
+}
 
+// Listener Class
+// onClick triggered when using taps Product in RecyclerView
+// Constructor - Function
+// onclick - Calls function passed via constructor
+class ProductListener(val clickListener : (productID: String) -> Unit) {
+    fun onClick(product: Product) = clickListener(product.productID)
 }
