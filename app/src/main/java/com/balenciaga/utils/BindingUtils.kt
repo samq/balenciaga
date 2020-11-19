@@ -11,7 +11,7 @@ import java.util.*
 @BindingAdapter("productListImage")
 fun ImageView.setProductListImage(product : Product?) {
     product?.let {
-        val uri = "@drawable/_${it.productID.replace('-', '_').toLowerCase(Locale.ROOT)}_a"
+        val uri = "@drawable/_${it.id.replace('-', '_').toLowerCase(Locale.ROOT)}_a"
         val resourceID = resources.getIdentifier(uri, "drawable", context.packageName)
         setImageResource(resourceID)
     }

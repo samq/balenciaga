@@ -26,7 +26,7 @@ data class Product(
 fun List<Product>.asDomainModel() : List<Product> {
     return map {
         Product(
-            productID = it.productID,
+            id = it.id,
             name = it.name,
             price = it.price,
             description = it.description,

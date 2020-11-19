@@ -20,11 +20,11 @@ class CategoryFragment : Fragment() {
     private var _binding : FragmentCategoryBinding? = null
     private val binding
         get() = _binding!!
+
     // Handler Object
     private val categoryFragmentHandler : CategoryFragmentHandler = object : CategoryFragmentHandler {
         // Handles navigation based on which TextView is clicked
         override fun navigateToProductList(view: View) {
-            Log.d("CategoryFragment","navigateToProductList Method")
             val textView : TextView = view as TextView
             // Back TextView clicked
             if(textView.text.toString() == resources.getString(R.string.back)) {

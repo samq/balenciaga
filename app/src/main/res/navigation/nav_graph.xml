@@ -35,5 +35,9 @@
         android:id="@+id/productDetailsFragment"
         android:name="com.balenciaga.fragments.ProductDetailsFragment"
         android:label="fragment_product_details"
-        tools:layout="@layout/fragment_product_details" />
+        tools:layout="@layout/fragment_product_details" >
+        <argument
+            android:name="productID"
+            app:argType="string" />
+    </fragment>
 </navigation>

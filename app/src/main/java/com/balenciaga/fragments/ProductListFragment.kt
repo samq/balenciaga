@@ -34,7 +34,8 @@ class ProductListFragment : Fragment() {
         // ViewManager
         val viewManager = GridLayoutManager(activity, 2)
         val viewAdapter = ProductAdapter(ProductListener {
-            findNavController().navigate(ProductListFragmentDirections.navigateToProductDetailsFragment())
+            val direction = ProductListFragmentDirections.navigateToProductDetailsFragment(it)
+            findNavController().navigate(direction)
         })
 
         // RecyclerView - Configuration

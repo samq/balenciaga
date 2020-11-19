@@ -53,7 +53,7 @@ class ProductAdapter(private val clickListener: ProductListener)
 class ProductDiffCallback : DiffUtil.ItemCallback<Product>() {
     // Checks if Products are the same
     override fun areItemsTheSame(oldItem: Product, newItem: Product): Boolean {
-        return oldItem.productID == newItem.productID
+        return oldItem.id == newItem.id
     }
     // Checks if Product contents have changed (equality check via data class)
     override fun areContentsTheSame(oldItem: Product, newItem: Product): Boolean {
@@ -66,5 +66,5 @@ class ProductDiffCallback : DiffUtil.ItemCallback<Product>() {
 // Constructor - Function
 // onclick - Calls function passed via constructor
 class ProductListener(val clickListener : (productID: String) -> Unit) {
-    fun onClick(product: Product) = clickListener(product.productID)
+    fun onClick(product: Product) = clickListener(product.id)
 }
