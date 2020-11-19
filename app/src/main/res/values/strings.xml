@@ -24,10 +24,11 @@
     <string name="kids">Kids</string>
     <string name="collections">Collections</string>
     <string name="previousSeasons">Previous Seasons</string>
+    <!-- Product List Fragment -->
+    <string name="productPrice">$%1$.2f</string>
+    <string name="productListImage">\@drawable/_%1$s_a.jpg</string>
     <!-- Filter Fragment -->
     <string name="filter">Filter</string>
     <!-- Product View -->
     <string name="productImage">Product Image</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
