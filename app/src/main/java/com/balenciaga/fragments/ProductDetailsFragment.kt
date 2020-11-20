@@ -6,12 +6,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.navigation.fragment.navArgs
 import com.balenciaga.R
 import com.balenciaga.databinding.FragmentProductDetailsBinding
 import com.balenciaga.network.Product
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
+import java.util.Locale
 
 class ProductDetailsFragment : Fragment() {
 
@@ -37,5 +39,13 @@ class ProductDetailsFragment : Fragment() {
             text = getString(R.string.addToBag)
             setBackgroundColor(Color.parseColor("#44db5e"))
         }
+        binding.productImagePlaceholder.apply {
+            val uri = "@drawable/_${product.id.replace('-', '_').toLowerCase(Locale.ROOT)}_1"
+            val resourceID = resources.getIdentifier(uri, "drawable", context.packageName)
+            setImageResource(resourceID)
+            scaleType = ImageView.ScaleType.FIT_START
+        }
+        binding.productNameTextView.text = product.name
+        binding.productDescriptionTextView.text = product.description
     }
 }
