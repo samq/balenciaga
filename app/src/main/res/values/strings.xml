@@ -33,4 +33,6 @@
     <string name="productImage">Product Image</string>
     <!-- Product Details Fragment -->
     <string name="addToBag">Add to Bag</string>
+    <string name="shippingAndReturn"><![CDATA[Shipping & Return]]></string>
+    <string name="storeAvailability">Store Availability</string>
 </resources>

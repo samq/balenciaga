@@ -70,6 +70,22 @@
                     android:background="@drawable/border_bottom"
                     android:theme="@style/productDescription"/>
 
+                <TextView
+                    android:id="@+id/storeAvailabilityTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/storeAvailability"
+                    android:background="@drawable/border_bottom"
+                    android:theme="@style/centeredAndPaddedTextView" />
+
+                <TextView
+                    android:id="@+id/shippingAndReturnsTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/shippingAndReturn"
+                    android:background="@drawable/border_bottom"
+                    android:theme="@style/centeredAndPaddedTextView" />
+
             </LinearLayout>
         </ScrollView>
 
