@@ -8,6 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
+import androidx.core.os.bundleOf
+import androidx.core.view.size
+import androidx.fragment.app.setFragmentResult
+import androidx.fragment.app.setFragmentResultListener
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.balenciaga.R
@@ -21,6 +25,9 @@ class CategoryFragment : Fragment() {
     private val binding
         get() = _binding!!
 
+    private val args : CategoryFragmentArgs by navArgs()
+    private lateinit var category : String
+
     // Handler Object
     private val categoryFragmentHandler : CategoryFragmentHandler = object : CategoryFragmentHandler {
         // Handles navigation based on which TextView is clicked
@@ -33,7 +40,7 @@ class CategoryFragment : Fragment() {
             // Navigate to ProductListFragment
             // Passes category string to be used as a filter for results
             else {
-                val directions = CategoryFragmentDirections.navigateToProductListFragment()
+                val directions = CategoryFragmentDirections.navigateToProductListFragment(view.text.toString())
                 findNavController().navigate(directions)
             }
         }
@@ -55,6 +62,11 @@ class CategoryFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // Argument passed by MainFragment
+        category = args.category
+        // Send data to child (SearchbarFragment)
+        childFragmentManager.findFragmentById(R.id.searchbarFragment)?.arguments = bundleOf(Pair("category", category))
 
         binding.categoryFragmentHandler = categoryFragmentHandler
 

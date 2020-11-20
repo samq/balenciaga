@@ -20,7 +20,7 @@ class MainFragment : Fragment() {
     private val mainFragmentHandler : MainFragmentHandler = object : MainFragmentHandler {
         override fun navigateToCategoryFragment(view: View) {
             Log.d("MainFragment", "navigateToCategoryFragment Method")
-            val directions = MainFragmentDirections.navigateToCategoryFragment()
+            val directions = MainFragmentDirections.navigateToCategoryFragment((view as TextView).text.toString())
             findNavController().navigate(directions)
         }
     }

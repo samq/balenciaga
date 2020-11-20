@@ -21,6 +21,9 @@
         <action
             android:id="@+id/navigate_to_productListFragment"
             app:destination="@id/productListFragment" />
+        <argument
+            android:name="category"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/productListFragment"
@@ -30,6 +33,9 @@
         <action
             android:id="@+id/navigate_to_productDetailsFragment"
             app:destination="@id/productDetailsFragment" />
+        <argument
+            android:name="category"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/productDetailsFragment"

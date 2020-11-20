@@ -5,12 +5,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.balenciaga.R
 import com.balenciaga.adapters.ProductAdapter
 import com.balenciaga.adapters.ProductListener
 import com.balenciaga.databinding.FragmentProductListBinding
@@ -25,6 +28,9 @@ class ProductListFragment : Fragment() {
 
     // ViewModel
     private val viewModel : ProductViewModel by viewModels()
+
+    private val args : ProductListFragmentArgs by navArgs()
+    private lateinit var category : String
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // View Binding
@@ -58,5 +64,14 @@ class ProductListFragment : Fragment() {
         })
 
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // Argument passed by MainFragment
+        category = args.category
+        // Send data to child (SearchbarFragment)
+        childFragmentManager.findFragmentById(R.id.searchbarFragment)?.arguments = bundleOf(Pair("category", category))
     }
 }

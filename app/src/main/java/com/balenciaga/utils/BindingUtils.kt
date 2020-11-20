@@ -10,6 +10,12 @@ import java.util.Locale
 
 // Extension Functions
 
+// SEARCHBAR FRAGMENT
+@BindingAdapter("productCategory")
+fun TextView.setCategory(category : String) {
+    text = category
+}
+
 // PRODUCT LIST FRAGMENT
 // BINDING UTILS
 
