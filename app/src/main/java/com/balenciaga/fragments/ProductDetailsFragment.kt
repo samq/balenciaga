@@ -32,20 +32,9 @@ class ProductDetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Deserialize to Product object
         product = Json.decodeFromString(args.product)
-
-        binding.priceTextView.text = getString(R.string.productListPrice, product.price)
-        binding.addToBagTextView.apply {
-            text = getString(R.string.addToBag)
-            setBackgroundColor(Color.parseColor("#44db5e"))
-        }
-        binding.productImagePlaceholder.apply {
-            val uri = "@drawable/_${product.id.replace('-', '_').toLowerCase(Locale.ROOT)}_1"
-            val resourceID = resources.getIdentifier(uri, "drawable", context.packageName)
-            setImageResource(resourceID)
-            scaleType = ImageView.ScaleType.FIT_START
-        }
-        binding.productNameTextView.text = product.name
-        binding.productDescriptionTextView.text = product.description
+        // Binding Project object for usage (IE. BindingAdapters)
+        binding.product = product
     }
 }

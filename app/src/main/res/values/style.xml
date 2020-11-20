@@ -52,4 +52,15 @@
     <style name="centeredAndPaddedTextView" parent="@style/centeredTextView">
         <item name="android:padding">12dp</item>
     </style>
+    <style name="productDetails">
+        <item name="android:paddingHorizontal">10dp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+    <style name="productDetailsHeader" parent="@style/productDetails">
+        <item name="android:paddingTop">16dp</item>
+    </style>
+    <style name="productID" parent="@style/productDetails">
+        <item name="android:paddingBottom">16dp</item>
+    </style>
 </resources>
