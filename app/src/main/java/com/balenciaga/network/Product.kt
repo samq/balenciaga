@@ -1,11 +1,13 @@
 package com.balenciaga.network
 
 import com.squareup.moshi.Json
+import kotlinx.serialization.Serializable
 
 // Moshi - Parses JSON data and converts them into Kotlin objects
 // Object that store parsed results
 // Properties correspond to name in JSON object
 // @Json(name="...") val ... - Annotation to map JSON attribute to different variable name
+@Serializable
 data class Product(
         @Json(name = "productID") val id : String,
         val name : String,

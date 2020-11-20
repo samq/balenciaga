@@ -31,4 +31,6 @@
     <string name="filter">Filter</string>
     <!-- Product View -->
     <string name="productImage">Product Image</string>
+    <!-- Product Details Fragment -->
+    <string name="addToBag">Add to Bag</string>
 </resources>

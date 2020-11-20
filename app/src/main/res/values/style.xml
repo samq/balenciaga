@@ -28,4 +28,11 @@
     <style name="filterTextView">
         <item name="textAllCaps">true</item>
     </style>
+    <style name="shoppingTextView">
+        <item name="android:padding">12dp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textFontWeight">700</item>
+        <item name="android:textSize">12sp</item>
+    </style>
 </resources>

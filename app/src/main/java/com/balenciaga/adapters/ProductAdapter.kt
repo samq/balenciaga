@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.balenciaga.databinding.ProductViewBinding
 import com.balenciaga.network.Product
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 
 // Adapter
 // RecyclerView.Adapter<ProductAdapter.ProductViewHolder>()
@@ -66,6 +68,6 @@ class ProductDiffCallback : DiffUtil.ItemCallback<Product>() {
 // onClick triggered when using taps Product in RecyclerView
 // Constructor - Function
 // onclick - Calls function passed via constructor
-class ProductListener(val clickListener : (productID: String) -> Unit) {
-    fun onClick(product: Product) = clickListener(product.id)
+class ProductListener(val clickListener : (product: String) -> Unit) {
+    fun onClick(product: Product) = clickListener(Json.encodeToString(product))
 }

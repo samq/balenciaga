@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.balenciaga.adapters.ProductAdapter
@@ -45,6 +46,8 @@ class ProductListFragment : Fragment() {
             // Uses specified LayoutManager and ViewAdapter
             layoutManager = viewManager
             adapter = viewAdapter
+            // addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.HORIZONTAL))
+            // addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
         }
 
         // ViewModel
