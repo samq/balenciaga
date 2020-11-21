@@ -29,9 +29,8 @@ class ProductAdapter(private val clickListener: ProductListener)
         val product = getItem(position)
         holder.bind(product, position, clickListener)
     }
-
+    // ViewHolder
     class ProductViewHolder private constructor(private val binding: ProductViewBinding) : RecyclerView.ViewHolder(binding.root) {
-
         // bind - Sets the binding(s) needed by the ProductViewHolder
         fun bind(product: Product, position: Int, clickListener: ProductListener) {
             binding.product = product
@@ -39,7 +38,6 @@ class ProductAdapter(private val clickListener: ProductListener)
             binding.position = position
             binding.executePendingBindings()
         }
-
         // Static Method from - Generates ProductViewHolder via View Binding object
         companion object {
             fun from(parent: ViewGroup) : ProductViewHolder {
@@ -63,7 +61,6 @@ class ProductDiffCallback : DiffUtil.ItemCallback<Product>() {
         return oldItem == newItem
     }
 }
-
 // Listener Class
 // onClick triggered when using taps Product in RecyclerView
 // Constructor - Function

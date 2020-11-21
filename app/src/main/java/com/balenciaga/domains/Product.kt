@@ -2,6 +2,8 @@ package com.balenciaga.domains
 
 import kotlinx.serialization.Serializable
 
+// Domain Object
+// Main object used throughout application
 @Serializable
 data class Product(
     val id : String,

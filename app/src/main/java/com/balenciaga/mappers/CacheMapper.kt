@@ -5,6 +5,7 @@ import com.balenciaga.domains.Product
 import com.balenciaga.utils.EntityMapper
 import javax.inject.Inject
 
+// Converts an Entity Object to a Domain Object
 class CacheMapper @Inject constructor() : EntityMapper<ProductEntity, Product> {
     override fun mapFromEntity(entity: ProductEntity): Product {
         return Product(

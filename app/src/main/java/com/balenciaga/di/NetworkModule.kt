@@ -12,6 +12,8 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Singleton
 
+// Dagger/Hilt Module
+// Modules deal with remoteDataSource - Webservices
 @Module
 @InstallIn(ApplicationComponent::class)
 object NetworkModule {
@@ -19,6 +21,8 @@ object NetworkModule {
     // Base URL for API
     private const val BASE_URL = "https://samq.github.io/data/"
 
+    // Moshi Object for use in Retrofit Object
+    // Used to convert JSON to Kotlin/Java Object
     @Singleton
     @Provides
     fun provideMoshi() : Moshi {
@@ -26,7 +30,7 @@ object NetworkModule {
         return Moshi.Builder()
             .add(KotlinJsonAdapterFactory()).build()
     }
-
+    // Retrofit - HTTP API
     @Singleton
     @Provides
     fun provideRetrofit(moshi: Moshi) : Retrofit.Builder {
@@ -35,7 +39,7 @@ object NetworkModule {
             .addConverterFactory(MoshiConverterFactory.create(moshi))
             .baseUrl(BASE_URL)
     }
-
+    // Retrofit - HTTP API
     @Singleton
     @Provides
     fun provideProductAPIService(retrofit: Retrofit.Builder): ProductAPIService {

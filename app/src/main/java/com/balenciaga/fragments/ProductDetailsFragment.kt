@@ -15,10 +15,13 @@ import kotlinx.serialization.json.Json
 @AndroidEntryPoint
 class ProductDetailsFragment : Fragment() {
 
+    // Bindings
     private var _binding : FragmentProductDetailsBinding? = null
     private val binding
         get() = _binding!!
-
+    // Navigation Arguments
+    // Serialized Product passed by Navigator
+    // Deserialization so that Product can be used to populate Fragment with data
     private val args : ProductDetailsFragmentArgs by navArgs()
     private lateinit var product : Product
 
@@ -29,7 +32,6 @@ class ProductDetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         // Deserialize to Product object
         product = Json.decodeFromString(args.product)
         // Binding Project object for usage (IE. BindingAdapters)

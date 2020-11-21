@@ -5,6 +5,7 @@ import com.balenciaga.network.NetworkProduct
 import com.balenciaga.utils.EntityMapper
 import javax.inject.Inject
 
+// Converts Network Objects into Domain Objects and vice versa
 class NetworkMapper @Inject constructor() : EntityMapper<NetworkProduct, Product> {
     override fun mapFromEntity(entity: NetworkProduct): Product {
         return Product(

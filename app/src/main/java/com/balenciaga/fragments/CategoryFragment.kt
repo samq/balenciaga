@@ -17,20 +17,21 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class CategoryFragment : Fragment() {
-
+    // Bindings
     private var _binding : FragmentCategoryBinding? = null
     private val binding
         get() = _binding!!
-
+    // Navigation Arguments
+    // Used to display which Category user is currently viewing
     private val args : CategoryFragmentArgs by navArgs()
     private lateinit var category : String
 
-    // Handler Object
+    // Custom Handler Object
     private val categoryFragmentHandler : CategoryFragmentHandler = object : CategoryFragmentHandler {
         // Handles navigation based on which TextView is clicked
         override fun navigateToProductList(view: View) {
             val textView : TextView = view as TextView
-            // Back TextView clicked
+            // Back TextView clicked - Navigates the user back
             if(textView.text.toString() == resources.getString(R.string.back)) {
                 onBackPressed()
             }
@@ -45,7 +46,6 @@ class CategoryFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         // Back Press Handler
         requireActivity().onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() = onBackPressed()
@@ -59,14 +59,13 @@ class CategoryFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         // Argument passed by MainFragment
         category = args.category
         // Send data to child (SearchbarFragment)
         childFragmentManager.findFragmentById(R.id.searchbarFragment)?.arguments = bundleOf(Pair("category", category))
-
+        // Binding
         binding.categoryFragmentHandler = categoryFragmentHandler
-
+        // Hides the Toolbar Icons on current Fragment
         (activity as MainActivity).unhideToolbarIcons()
     }
 
@@ -76,7 +75,6 @@ class CategoryFragment : Fragment() {
         findNavController().popBackStack()
     }
 }
-
 interface CategoryFragmentHandler {
     fun navigateToProductList(view: View)
 }

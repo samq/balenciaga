@@ -2,12 +2,14 @@ package com.balenciaga.databases
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.balenciaga.network.NetworkProduct
 
+// Maps to SQLite table entry in the database
 @Entity(tableName = "products")
 data class ProductEntity(
+    // Must have a PrimaryKey
     @PrimaryKey
     val id : String,
+    // @ColumnInfo - Allows customization of column name in table
     val name : String,
     val price : Double,
     val description : String,
@@ -16,5 +18,4 @@ data class ProductEntity(
     val dimensions : String,
     val composition : String,
     val details : String,
-    // val variations: List<String>,
 )

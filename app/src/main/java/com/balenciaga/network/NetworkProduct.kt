@@ -1,7 +1,6 @@
 package com.balenciaga.network
 
 import com.squareup.moshi.Json
-import kotlinx.serialization.Serializable
 
 // Moshi - Parses JSON data and converts them into Kotlin objects
 // Object that store parsed results

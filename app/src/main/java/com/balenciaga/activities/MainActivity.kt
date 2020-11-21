@@ -18,15 +18,12 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         // Binding
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         // Toolbar - Sets up Toolbar to be AppBar for the Activity
         toolbar = binding.toolbar
         setSupportActionBar(toolbar)
-
         // Title - Uppercase App Name
         title = resources.getString(R.string.app_name).toUpperCase(Locale.ROOT)
     }
@@ -55,7 +52,6 @@ class MainActivity : AppCompatActivity() {
             super.onOptionsItemSelected(item)
         }
     }
-
     // Hides Toolbar Icons
     fun hideToolbarIcons() {
         toolbar.menu.forEach { item -> item.isVisible = false }

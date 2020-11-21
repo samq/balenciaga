@@ -13,31 +13,26 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainFragment : Fragment() {
-
+    // Binding
     private var _binding : FragmentMainBinding? = null
-    // Property is only valid between onCreateView and onDestroyView
     private val binding
         get() = _binding!!
-    //
+    // Custom Handler Object that handles Navigation when Views are clicked in Fragment
     private val mainFragmentHandler : MainFragmentHandler = object : MainFragmentHandler {
         override fun navigateToCategoryFragment(view: View) {
-            Log.d("MainFragment", "navigateToCategoryFragment Method")
             val directions = MainFragmentDirections.navigateToCategoryFragment((view as TextView).text.toString())
             findNavController().navigate(directions)
         }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
-        // return inflater.inflate(R.layout.fragment_main, container, false)
-
         _binding = FragmentMainBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        // Bindings
         binding.mainFragmentHandler = mainFragmentHandler
     }
 }

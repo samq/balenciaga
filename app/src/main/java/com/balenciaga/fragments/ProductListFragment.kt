@@ -27,8 +27,9 @@ class ProductListFragment : Fragment() {
     private val binding
         get() = _binding!!
     // ViewModel
+    // Simplify ViewModel creation (vs. ViewModelProvider and Factory)
     private val viewModel : ProductViewModel by viewModels()
-    // Navigation Arguments
+    // Navigation Arguments - Argument passed by the previous Fragment to show Product Category
     private val args : ProductListFragmentArgs by navArgs()
     private lateinit var category : String
 
@@ -38,7 +39,10 @@ class ProductListFragment : Fragment() {
         // RecyclerView
         val recyclerView = binding.productListRecyclerView
         // ViewManager
+        // Creates a grid to be used for RecyclerView
         val viewManager = GridLayoutManager(activity, 2)
+        // Custom view adapter to be used for RecyclerView
+        // Argument - Custom Listener class to be used to navigate to next screen when views clicked
         val viewAdapter = ProductAdapter(ProductListener {
             val direction = ProductListFragmentDirections.navigateToProductDetailsFragment(it)
             findNavController().navigate(direction)
@@ -50,13 +54,15 @@ class ProductListFragment : Fragment() {
             // Uses specified LayoutManager and ViewAdapter
             layoutManager = viewManager
             adapter = viewAdapter
+            // Decoration - Can be used for border displayed instead of background attribute
             // addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.HORIZONTAL))
             // addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
         }
         // ViewModel
+        // Observe the LiveData containing the List<Product> grabbed by Repository
         viewModel.response.observe(viewLifecycleOwner, Observer {
+            // Submits list for ListAdapter to update RecyclerView accordingly
             viewAdapter.submitList(it)
-            Log.d("ProductListFragment", "observe - response")
         })
         return binding.root
     }

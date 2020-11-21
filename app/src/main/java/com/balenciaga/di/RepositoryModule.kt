@@ -12,10 +12,11 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
 import javax.inject.Singleton
 
+// Dagger/Hilt Module
 @Module
 @InstallIn(ApplicationComponent::class)
 object RepositoryModule {
-
+    // Creation of Repository object
     @Singleton
     @Provides
     fun provideProductRepository(
