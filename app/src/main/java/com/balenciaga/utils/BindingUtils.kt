@@ -5,7 +5,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.balenciaga.R
-import com.balenciaga.network.Product
+import com.balenciaga.domains.Product
 import java.util.Locale
 
 // Extension Functions
@@ -98,7 +98,7 @@ fun TextView.setProductDimensionsAndComposition(product: Product?) {
 @BindingAdapter("productDetails")
 fun TextView.setProductDetails(product: Product?) {
     product?.let {
-        val detailsList = it.details.split(",").map { detail -> detail.trim() }
+        val detailsList = it.details.map { detail -> detail.trim() }
         var detailsText = ""
         // Add bullet point followed by the detail and then a newline
         detailsList.forEach { detail -> detailsText += "\u2022 $detail \n" }

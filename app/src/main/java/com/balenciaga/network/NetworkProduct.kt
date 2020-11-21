@@ -7,8 +7,7 @@ import kotlinx.serialization.Serializable
 // Object that store parsed results
 // Properties correspond to name in JSON object
 // @Json(name="...") val ... - Annotation to map JSON attribute to different variable name
-@Serializable
-data class Product(
+data class NetworkProduct(
         @Json(name = "productID") val id : String,
         val name : String,
         val price : Double,
@@ -19,6 +18,3 @@ data class Product(
         val composition : String,
         val details : String,
 )
-
-// Extension Function
-// Converts Domain Object into Database Objects

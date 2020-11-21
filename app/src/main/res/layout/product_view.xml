@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
     <data>
-        <variable name="product" type="com.balenciaga.network.Product" />
+        <variable name="product" type="com.balenciaga.domains.Product" />
         <variable name="position" type="int" />
         <variable name="clickListener" type="com.balenciaga.adapters.ProductListener" />
     </data>

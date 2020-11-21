@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.balenciaga.databinding.ProductViewBinding
-import com.balenciaga.network.Product
+import com.balenciaga.domains.Product
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 

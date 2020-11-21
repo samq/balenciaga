@@ -1,37 +1,32 @@
 package com.balenciaga.models
 
-import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import com.balenciaga.network.ProductAPI
-import com.balenciaga.network.Product
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import androidx.hilt.Assisted
+import androidx.hilt.lifecycle.ViewModelInject
+import androidx.lifecycle.*
+import com.balenciaga.domains.Product
+import com.balenciaga.repository.ProductRepository
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
-class ProductViewModel() : ViewModel() {
+class ProductViewModel @ViewModelInject constructor(
+    private val repository: ProductRepository,
+    @Assisted private val savedStateHandle: SavedStateHandle
+) : ViewModel() {
+
     private var _response = MutableLiveData<List<Product>>()
     val response: LiveData<List<Product>>
         get() = _response
 
     init {
-        getProducts()
+        viewModelScope.launch {
+            repository.getProducts().collect {
+                _response.value = it
+            }
+        }
     }
+}
 
-    private fun getProducts() {
-        // Log.d("ProductViewModel - getProducts", "START")
-        ProductAPI.retrofitService.getProducts().enqueue(
-            object : Callback<List<Product>> {
-                override fun onFailure(call: Call<List<Product>>, t: Throwable) {
-                    // Log.d("ProductViewModel - getProducts", "onFailure - ${t.message}")
-                    _response.value = null
-                }
-
-                override fun onResponse(call: Call<List<Product>>, response: Response<List<Product>>) {
-                    // Log.d("ProductViewModel - getProducts", "onSuccess - ${response.body()}")
-                    _response.value = response.body()
-                }
-            })
-    }
+sealed class MainStateEvent {
+    object GetProductsEvents: MainStateEvent()
+    object None: MainStateEvent()
 }

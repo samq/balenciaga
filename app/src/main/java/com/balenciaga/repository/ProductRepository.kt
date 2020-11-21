@@ -1,28 +1,30 @@
 package com.balenciaga.repository
 
-import com.balenciaga.databases.ProductRoomDatabase
+import android.util.Log
+import com.balenciaga.databases.ProductDao
+import com.balenciaga.domains.Product
+import com.balenciaga.mappers.CacheMapper
+import com.balenciaga.mappers.NetworkMapper
 import com.balenciaga.network.ProductAPIService
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
-
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 
 class ProductRepository(
-    private val localDataSource : ProductRoomDatabase,
-    private val remoteDataSource : ProductAPIService)
-{
-//    ProductAPI.retrofitService.getProducts().enqueue(
-//        object : Callback<List<Product>> {
-//            override fun onFailure(call: Call<List<Product>>, t: Throwable) {
-//                TODO()
-//            }
-//
-//            override fun onResponse(call: Call<List<Product>>, response: Response<List<Product>>) {
-//                TODO()
-//            }
-//        })
+    private val localDataSource: ProductDao,
+    private val remoteDataSource: ProductAPIService,
+    private val cacheMapper: CacheMapper,
+    private val networkMapper: NetworkMapper
+) {
 
-    // API used to refresh the offline cache
-    suspend fun getProducts() {
-        withContext(Dispatchers.IO) {}
+    suspend fun getProducts() : Flow<List<Product>> = flow {
+        Log.d("ProductRepository", "getProducts() - Start")
+        val networkProducts = remoteDataSource.getProducts()
+        val products = networkMapper.mapFromEntityList(networkProducts)
+        for(product in products) {
+            localDataSource.insertProduct(cacheMapper.mapToEntity(product))
+            Log.d("ProductRepository", "$product.name")
+        }
+        val cachedProducts = localDataSource.getAllProducts()
+        emit(cacheMapper.mapFromEntityList(cachedProducts))
     }
 }

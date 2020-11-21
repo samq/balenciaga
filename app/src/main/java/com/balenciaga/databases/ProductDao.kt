@@ -6,17 +6,17 @@ import androidx.room.*
 @Dao
 interface ProductDao {
     @Delete
-    fun deleteProduct(product : Product)
+    suspend fun deleteProduct(product : ProductEntity)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertProduct(product : Product)
+    suspend fun insertProduct(product : ProductEntity) : Long
 
     @Query("SELECT * FROM products")
-    fun loadAllProducts() : LiveData<List<Product>>
+    suspend fun getAllProducts() : List<ProductEntity>
 
-    @Query("SELECT * FROM products WHERE productID = :productID")
-    fun loadProductDetails(productID : String) : LiveData<Product>
+    @Query("SELECT * FROM products WHERE id = :id")
+    suspend fun getProductDetails(id : String) : List<ProductEntity>
 
     @Update
-    fun updateProduct(product : Product)
+    suspend fun updateProduct(product : ProductEntity)
 }

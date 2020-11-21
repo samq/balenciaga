@@ -1,20 +1,18 @@
 package com.balenciaga.fragments
 
-import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.navigation.fragment.navArgs
-import com.balenciaga.R
 import com.balenciaga.databinding.FragmentProductDetailsBinding
-import com.balenciaga.network.Product
+import com.balenciaga.domains.Product
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
-import java.util.Locale
 
+@AndroidEntryPoint
 class ProductDetailsFragment : Fragment() {
 
     private var _binding : FragmentProductDetailsBinding? = null

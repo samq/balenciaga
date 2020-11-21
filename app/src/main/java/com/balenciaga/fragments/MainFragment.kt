@@ -9,7 +9,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.navigation.fragment.findNavController
 import com.balenciaga.databinding.FragmentMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainFragment : Fragment() {
 
     private var _binding : FragmentMainBinding? = null
